@@ -46,12 +46,6 @@ class ViewPostSerializer(serializers.ModelSerializer):
     
 
 class PostListSerializer(serializers.ModelSerializer):
-    created_at = serializers.SerializerMethodField()
-    #comments = CommentResponseSerializer(many=True, read_only=True)
-
     class Meta:
         model = Post
-        fields = '__all__'
-    
-    def get_created_at(self, obj):
-        return obj.created_at.date() # obj: 우리가 갖고 있는 데이터 객체
+        fields = ['id', 'title', 'body']
